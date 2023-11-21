@@ -29,11 +29,10 @@ const ManageAddressSettingsScreen = ({navigation}: any) => {
     (state: RootState) =>
       state.getAddressPost.samyakAddressDetailsPost[0]?.User_Address,
   );
-  console.log(addressSelector, 'addressData');
+
   const showAddressObj = {
     userName: '9849390103',
   };
-  console.log(deleteAddressAPIRes, 'deleteAddressAPIRes');
 
   useEffect(() => {
     if (deleteAddressAPIRes?.isSuccess) {
@@ -44,21 +43,21 @@ const ManageAddressSettingsScreen = ({navigation}: any) => {
     }
   }, [deleteAddressAPIRes]);
 
-  const showAlert = (title, message) => {
+  const showAlert = (title: string, message: string | undefined) => {
     Alert.alert(title, message, [], {cancelable: false});
   };
 
   useEffect(() => {
     getAddressAPIReq(showAddressObj);
   }, []);
+
   useEffect(() => {
     if (getAddressAPIRes?.isSuccess) {
-      console.log('value setted');
-
       setAddressData(getAddressAPIRes?.data?.Message[0]?.User_Address);
     }
   }, [getAddressAPIRes, addressSelector]);
-  const handleDelete = item => {
+
+  const handleDelete = (_item: any) => {
     let credentials = {
       UserName: '9849390103',
       Address_Type: '01',
@@ -70,7 +69,7 @@ const ManageAddressSettingsScreen = ({navigation}: any) => {
     navigation.navigate('AddAddress');
   };
 
-  const handleEdit = item => {
+  const handleEdit = (item: any) => {
     navigation.navigate('EditAddress', {item});
   };
 
@@ -111,7 +110,7 @@ const ManageAddressSettingsScreen = ({navigation}: any) => {
           <View style={{left: 10}}>
             <Text style={{color: '#2f2f2f'}}>{item?.Address_Type_Desc}</Text>
           </View>
-          <View style={{left: 140}}>
+          <View style={{left: 120}}>
             <TouchableOpacity onPress={() => handleEdit(item)}>
               <Image
                 source={require('../assets/images/edit.png')}
@@ -195,7 +194,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   BackButtonView: {
-    width: '30%',
     left: 30,
     position: 'absolute',
     bottom: 0,
@@ -213,7 +211,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     tintColor: 'white',
-    right: 15,
+    right: 10,
   },
   buttonTexts: {
     color: 'white',

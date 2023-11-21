@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: 50,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: '#000',
     paddingHorizontal: 10,
     borderRadius: 5,
@@ -173,22 +173,18 @@ const styles = StyleSheet.create({
   },
   selectText: {
     fontSize: 18,
-    color: '#747577',
   },
   option: {
     padding: 20,
-    borderBottomColor: '#747577',
   },
   overlay: {
     position: 'absolute',
     top: 220,
     left: 10,
     right: 10,
-    bottom: 150,
   },
   BackButtonView: {
-    width: '30%',
-    left: 30,
+    left: 20,
     position: 'absolute',
     bottom: 0,
     marginBottom: 20,
@@ -205,7 +201,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     tintColor: 'white',
-    right: 15,
+    right: 10,
   },
   buttonTexts: {
     color: 'white',
@@ -217,7 +213,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   card: {
-    maxHeight: 280,
     backgroundColor: 'white',
   },
 });

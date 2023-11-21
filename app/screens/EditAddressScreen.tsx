@@ -26,11 +26,12 @@ const EditAddressScreen = ({navigation}: any) => {
   const [landmark, setLandmark] = useState(editData?.item?.Landmark);
   const [longitude, setLongitude] = useState(editData?.item?.Longitude);
   const [latitude, setLatitude] = useState(editData?.item?.Latitude);
-
+  //api for getting the address
   const [getAddressAPIReq] = useSamyakAddressPostMutation();
+  //api for updating the address
   const [updateAddressAPIReq, updateAddressAPIRes] =
     useSamyakUpdateAddressPostMutation();
-  console.log(updateAddressAPIRes, 'editAddressData');
+
   const showAlert = (title, message) => {
     Alert.alert(title, message, [], {cancelable: false});
   };
@@ -72,14 +73,10 @@ const EditAddressScreen = ({navigation}: any) => {
   return (
     <ScrollView style={styles.MainContainer}>
       <View style={styles.AddMemberView}>
-        <View>
-          <Text style={styles.headerText}>Edit Address</Text>
-        </View>
-        <View>
-          <TouchableOpacity onPress={handleCross}>
-            <Image source={require('../assets/images/black_cross.png')} />
-          </TouchableOpacity>
-        </View>
+        <Text style={styles.headerText}>Edit Address</Text>
+        <TouchableOpacity onPress={handleCross}>
+          <Image source={require('../assets/images/black_cross.png')} />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.MapContainer}>

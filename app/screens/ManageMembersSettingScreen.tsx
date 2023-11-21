@@ -202,14 +202,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fafbfb',
   },
   container: {
-    height: 100,
+    height: 70,
     backgroundColor: 'orange',
-    padding: 16,
+    paddingHorizontal: 16,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    top: 30,
+    top: 20,
   },
   BookingText: {
     fontSize: 20,
@@ -255,12 +255,10 @@ const styles = StyleSheet.create({
     margin: 15,
     padding: 12,
     flexDirection: 'row',
-    justifyContent: 'space-around',
     marginTop: 15,
   },
 
   BackButtonView: {
-    width: '30%',
     left: 15,
     position: 'absolute',
     bottom: 0,
@@ -278,7 +276,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     tintColor: 'white',
-    right: 15,
+    right: 10,
   },
   buttonTexts: {
     color: 'white',

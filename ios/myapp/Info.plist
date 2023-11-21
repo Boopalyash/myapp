@@ -9,6 +9,10 @@
 <string>$(PRODUCT_NAME) needs access to your Microphone.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSCameraUsageDescription</key>
+    <string>Allow access to the camera to take photos</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow access to the photo library to select photos</string>
 	<key>CFBundleDisplayName</key>
 	<string>myapp</string>
 	<key>CFBundleExecutable</key>

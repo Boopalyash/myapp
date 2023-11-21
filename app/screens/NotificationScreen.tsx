@@ -80,7 +80,8 @@ const NotificationScreen = ({navigation}: any) => {
   };
 
   return (
-    <ScrollView style={{backgroundColor: '#f0f5fe', flex: 1, padding: 10}}>
+    <View style={styles.container}>
+      {/* Header */}
       <View style={styles.AddMemberView}>
         <Text style={styles.headerText}>Notification</Text>
         <TouchableOpacity onPress={handleCross}>
@@ -88,6 +89,8 @@ const NotificationScreen = ({navigation}: any) => {
         </TouchableOpacity>
       </View>
       <View style={styles.separator} />
+
+      {/* Clear all and Mark all as Read options */}
       <View
         style={{
           flexDirection: 'row',
@@ -98,67 +101,74 @@ const NotificationScreen = ({navigation}: any) => {
         <Text style={{color: '#0645ad', right: 15}} onPress={handleClear}>
           Clear all
         </Text>
-
         <Text style={{color: '#0645ad'}} onPress={handleMarkAllAsRead}>
           Mark all as Read
         </Text>
       </View>
 
-      {notificationData.map((item: any, index: number) => {
-        const showDate =
-          index === 0 ||
-          item.Notify_Date !== notificationData[index - 1]?.Notify_Date;
-        const isLastItem = index === notificationData.length - 1;
+      {/* ScrollView for notifications */}
+      <ScrollView style={{backgroundColor: '#f0f5fe', padding: 10}}>
+        {/* Displaying notifications */}
+        {notificationData.map((item: any, index: number) => {
+          const showDate =
+            index === 0 ||
+            item.Notify_Date !== notificationData[index - 1]?.Notify_Date;
+          const isLastItem = index === notificationData.length - 1;
 
-        return (
-          <ScrollView
-            key={item?.Notification_Id}
-            style={{
-              backgroundColor: isContentVisible ? '#e0e0e0' : 'transparent',
-              marginBottom: isLastItem ? 30 : 0,
-              padding: 10,
-              marginTop: 10,
-            }}>
-            {showDate && <Text> Date: {item?.Notify_Date}</Text>}
-            <View style={{marginTop: 10, flexDirection: 'row'}}>
-              <Text numberOfLines={1} ellipsizeMode="tail" style={{flex: 1}}>
-                {item?.Notify_Message}
-              </Text>
-              <TouchableOpacity>
-                <View
-                  style={{
-                    backgroundColor: 'black',
-                    alignItems: 'center',
-                    padding: 5,
-                    borderRadius: 10,
-                  }}>
-                  <Text style={{color: 'white'}}>Older</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-
+          return (
             <View
+              key={item?.Notification_Id}
               style={{
+                backgroundColor: isContentVisible ? '#e0e0e0' : 'transparent',
+                marginBottom: isLastItem ? 30 : 0,
+                padding: 10,
                 marginTop: 10,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
               }}>
-              <Text>{item?.Time_Diff_Desc}</Text>
-              <TouchableOpacity
-                onPress={() => handleViewMore(item?.Notify_Message)}>
-                <Text style={{color: '#0645ad', right: 70}}>View More</Text>
-              </TouchableOpacity>
+              {showDate && <Text> Date: {item?.Notify_Date}</Text>}
+              <View style={{marginTop: 10, flexDirection: 'row'}}>
+                <Text numberOfLines={1} ellipsizeMode="tail" style={{flex: 1}}>
+                  {item?.Notify_Message}
+                </Text>
+                <TouchableOpacity>
+                  <View
+                    style={{
+                      backgroundColor: 'black',
+                      alignItems: 'center',
+                      padding: 5,
+                      borderRadius: 10,
+                    }}>
+                    <Text style={{color: 'white'}}>Older</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View
+                style={{
+                  marginTop: 10,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text>{item?.Time_Diff_Desc}</Text>
+                <TouchableOpacity
+                  onPress={() => handleViewMore(item?.Notify_Message)}>
+                  <Text style={{color: '#0645ad', right: 70}}>View More</Text>
+                </TouchableOpacity>
+              </View>
+
+              {isLastItem && <View style={{marginBottom: 30}} />}
             </View>
-          </ScrollView>
-        );
-      })}
-    </ScrollView>
+          );
+        })}
+      </ScrollView>
+    </View>
   );
 };
 
-export default NotificationScreen;
-
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f0f5fe',
+  },
   AddMemberView: {
     flexDirection: 'row',
     marginTop: 20,
@@ -174,3 +184,5 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
+
+export default NotificationScreen;

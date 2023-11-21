@@ -46,7 +46,7 @@ const BottomNavigation = () => {
               component={
                 item?.Menu_Desc === 'Bookings'
                   ? BookingNavigation
-                  : item?.Menu_Desc === 'Consultation'
+                  : item?.Menu_Desc === 'Lab Test'
                   ? LabNavigation
                   : item?.Menu_Desc === 'Dashboard'
                   ? DashBoardScreen
@@ -67,7 +67,6 @@ const BottomNavigation = () => {
                     style={{
                       width: 20,
                       height: 20,
-                      // top: 5,
                       resizeMode: 'contain',
                     }}
                   />
@@ -75,7 +74,6 @@ const BottomNavigation = () => {
                 tabBarLabelStyle: {
                   fontSize: 12,
                   fontWeight: 'bold',
-                  // top: 5,
                   color: 'grey',
                 },
               }}

@@ -7,17 +7,23 @@ import {
   TouchableOpacity,
   Modal,
   Linking,
+  Button,
+  Alert,
 } from 'react-native';
+import RazorpayCheckout from 'react-native-razorpay';
+
+const RAZORPAY_KEY_ID = 'rzp_test_GvotXwaXCqSxvf';
+const RAZORPAY_KEY_SECRET = 'G3T9c7c9XRtpeygGDZnD0lsu';
 
 const WalletScreen = ({navigation, route}: any) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const {dueAmount} = route.params;
 
-  const handlePaymentLink = (paymentUrl: string) => {
-    Linking.openURL(paymentUrl).catch(err =>
-      console.error('Failed to open URL: ', err),
-    );
-  };
+  // const handlePaymentLink = (paymentUrl: string) => {
+  //   Linking.openURL(paymentUrl).catch(err =>
+  //     console.error('Failed to open URL: ', err),
+  //   );
+  // };
 
   const handleLeftChevron = () => {
     setIsModalVisible(true);
@@ -32,6 +38,37 @@ const WalletScreen = ({navigation, route}: any) => {
 
   const handleScanner = () => {
     navigation.navigate('Scanner');
+  };
+
+  const startPayment = () => {
+    const options = {
+      description: 'Payment Description',
+      image: 'https://razorpay.com/assets/razorpay-glyph.svg',
+      currency: 'USD',
+      key: RAZORPAY_KEY_ID,
+      amount: (dueAmount * 100).toString(),
+      name: 'Samyak',
+      prefill: {
+        email: 'user@gmail.com',
+        contact: '9876543210',
+        name: 'User Name',
+      },
+      theme: {color: '#F37254'},
+    };
+
+    RazorpayCheckout.open(options)
+      .then(data => {
+        Alert.alert(
+          'Payment Successful',
+          `Payment ID: ${data.razorpay_payment_id}`,
+        );
+      })
+      .catch(error => {
+        Alert.alert(
+          'Payment Failed',
+          error.description || 'Transaction cancelled',
+        );
+      });
   };
 
   return (
@@ -93,7 +130,7 @@ const WalletScreen = ({navigation, route}: any) => {
         </View>
       </View>
 
-      <View style={styles.CardContainer}>
+      {/* <View style={styles.CardContainer}>
         <Text style={styles.PaymentOptiontext}>PAYMENT OPTIONS</Text>
 
         <View style={styles.CreditCardView}>
@@ -187,6 +224,9 @@ const WalletScreen = ({navigation, route}: any) => {
             </TouchableOpacity>
           </View>
         </View>
+      </View> */}
+      <View style={{flex: 0.5, justifyContent: 'center', alignItems: 'center'}}>
+        <Button title="Pay via Razorpay" onPress={startPayment} />
       </View>
     </View>
   );
@@ -364,3 +404,51 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
+
+// import React from 'react';
+// import {View, Button, Alert} from 'react-native';
+// import RazorpayCheckout from 'react-native-razorpay';
+
+// const RAZORPAY_KEY_ID = 'rzp_test_GvotXwaXCqSxvf';
+// const RAZORPAY_KEY_SECRET = 'G3T9c7c9XRtpeygGDZnD0lsu';
+
+// const YourComponent = () => {
+//   const startPayment = () => {
+//     const options = {
+//       description: 'Payment Description',
+//       image: 'https://razorpay.com/assets/razorpay-glyph.svg',
+//       currency: 'INR',
+//       key: RAZORPAY_KEY_ID,
+//       amount: '100',
+//       name: 'Samyak',
+//       prefill: {
+//         email: 'user@email.com',
+//         contact: '9876543210',
+//         name: 'User Name',
+//       },
+//       theme: {color: '#F37254'},
+//     };
+
+//     RazorpayCheckout.open(options)
+//       .then(data => {
+//         Alert.alert(
+//           'Payment Successful',
+//           `Payment ID: ${data.razorpay_payment_id}`,
+//         );
+//       })
+//       .catch(error => {
+//         Alert.alert(
+//           'Payment Failed',
+//           error.description || 'Transaction cancelled',
+//         );
+//       });
+//   };
+
+//   return (
+//     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+//       <Button title="Pay via Razorpay" onPress={startPayment} />
+//     </View>
+//   );
+// };
+
+// export default YourComponent;

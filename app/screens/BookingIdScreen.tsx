@@ -228,23 +228,17 @@ const BookingIdScreen = ({navigation}: any) => {
               {userDetails?.userDetails?.Pt_First_Age}
             </Text>
             <View style={{flexDirection: 'row'}}>
-              <View>
-                <Image
-                  source={require('../assets/images/gender.png')}
-                  style={{width: 35, height: 30}}
-                />
-              </View>
-              <View>
-                <Text style={{left: 20, fontSize: 20, color: '#797979'}}>
-                  {userDetails?.userDetails?.Pt_Gender}
-                </Text>
-              </View>
-              <View>
-                <Image
-                  source={require('../assets/images/mobile.png')}
-                  style={{width: 30, height: 30, left: 40}}
-                />
-              </View>
+              <Image
+                source={require('../assets/images/gender.png')}
+                style={{width: 35, height: 30}}
+              />
+              <Text style={{left: 20, fontSize: 20, color: '#797979'}}>
+                {userDetails?.userDetails?.Pt_Gender}
+              </Text>
+              <Image
+                source={require('../assets/images/mobile.png')}
+                style={{width: 30, height: 30, left: 40}}
+              />
             </View>
           </View>
         </View>
@@ -279,16 +273,14 @@ const BookingIdScreen = ({navigation}: any) => {
           <Text style={{color: '#696969', alignSelf: 'center'}}>
             How would you like to rate the phlebotomist?
           </Text>
-          <View>
-            <Rating
-              type="star"
-              ratingCount={5}
-              imageSize={20}
-              showRating
-              startingValue={userRating}
-              onFinishRating={handleRatingCompleted}
-            />
-          </View>
+          <Rating
+            type="star"
+            ratingCount={5}
+            imageSize={20}
+            showRating
+            startingValue={userRating}
+            onFinishRating={handleRatingCompleted}
+          />
           <TouchableOpacity onPress={handlePostRating}>
             <View style={styles.RatingView}>
               <Text style={{color: 'black', top: 5, alignSelf: 'center'}}>
@@ -312,7 +304,7 @@ const BookingIdScreen = ({navigation}: any) => {
             </View>
             <TouchableOpacity onPress={handlePostReview}>
               <View style={styles.PostView}>
-                <Text style={{color: 'black', top: 5}}>Post</Text>
+                <Text style={{color: 'black'}}>Post</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -335,8 +327,8 @@ const BookingIdScreen = ({navigation}: any) => {
 
         <View
           style={{
-            width: '30%',
-            left: 25,
+            left: 20,
+            alignSelf: 'flex-start',
           }}>
           <TouchableOpacity style={styles.buttons} onPress={handleButtonPresss}>
             <Image
@@ -442,7 +434,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: '#f2f2f2',
     margin: 15,
-    paddingVertical: 20,
+    paddingVertical: 10,
     padding: 10,
     marginTop: -20,
   },
@@ -456,7 +448,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   input: {
-    height: 100,
+    // height: 100,
     width: 280,
     backgroundColor: 'white',
     borderRadius: 10,
@@ -465,10 +457,9 @@ const styles = StyleSheet.create({
   PostView: {
     backgroundColor: '#dddbdb',
     padding: 10,
-    height: 50,
-    marginTop: 30,
+    marginTop: 10,
     borderRadius: 10,
-    left: 10,
+    left: 5,
   },
   RatingView: {
     backgroundColor: '#dddbdb',
@@ -490,7 +481,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     tintColor: 'white',
-    right: 15,
+    right: 10,
   },
   buttonTexts: {
     color: 'white',
@@ -510,8 +501,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   scrollViewContainer: {
-    flex: 1, // Takes the remaining space after the container
-    // marginTop: -50,
+    flex: 1,
   },
 });
 

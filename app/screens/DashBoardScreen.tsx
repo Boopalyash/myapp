@@ -63,7 +63,7 @@ const DashBoardScreen = ({navigation}: any) => {
   useEffect(() => {
     const healthObj = {
       userName: '9849390103',
-      password: 'Ram@12345678',
+      password: 'Sandeep@123',
     };
     healthAPIReq(healthObj);
   }, []);
@@ -76,10 +76,11 @@ const DashBoardScreen = ({navigation}: any) => {
     navigation.navigate('Profile');
   };
 
-  const toggleDescription = () => {
-    setShowFullDescription(!showFullDescription);
-  };
+  // const toggleDescription = () => {
+  //   setShowFullDescription(!showFullDescription);
+  // };
 
+  //useEffect for default branch
   useFocusEffect(
     React.useCallback(() => {
       AsyncStorage.getItem('selectedBranch')
@@ -237,29 +238,29 @@ const DashBoardScreen = ({navigation}: any) => {
   );
 
   return (
-    <View>
-      <View style={styles.container}>
-        <View style={styles.row}>
-          <Text style={styles.BookingText}>Dashboard</Text>
-          <View style={styles.imageRow}>
-            <Image
-              source={require('../assets/images/alarm.png')}
-              style={styles.image}
-            />
-            <Image
-              source={require('../assets/images/bellwhite.png')}
-              style={styles.image}
-            />
-            <TouchableOpacity onPress={handleProfile}>
-              <View style={styles.circle}>
-                <Text style={styles.circleText}>RA</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+    <View style={styles.container}>
+      <View style={styles.row}>
+        <Text style={styles.BookingText}>Dashboard</Text>
+        <View style={styles.imageRow}>
+          <Image
+            source={require('../assets/images/alarm.png')}
+            style={styles.image}
+          />
+          <Image
+            source={require('../assets/images/bellwhite.png')}
+            style={styles.image}
+          />
+          <TouchableOpacity onPress={handleProfile}>
+            <View style={styles.circle}>
+              <Text style={styles.circleText}>RA</Text>
+            </View>
+          </TouchableOpacity>
         </View>
+      </View>
 
-        <View style={styles.separator} />
+      <View style={styles.separator} />
 
+      <View style={{marginBottom: 20}}>
         <FlatList
           data={data}
           keyExtractor={item => item.id}
@@ -279,7 +280,7 @@ const DashBoardScreen = ({navigation}: any) => {
                   item.state && styles.selectedOfferCard,
                 ]}>
                 <View style={styles.imageContainer}>
-                  <Image source={item.image} style={styles.image1} />
+                  <Image source={item.image} />
                 </View>
                 <Text style={styles.offerCardTitle}>{item.title}</Text>
               </View>
@@ -289,105 +290,97 @@ const DashBoardScreen = ({navigation}: any) => {
       </View>
 
       <View style={styles.cardContainer}>
-        <View style={styles.cardContainer}>
-          {!showPromotion && (
-            <View style={styles.LocationView}>
-              <Image
-                source={require('../assets/images/location.png')}
-                style={styles.LocationImg}
-              />
-              <Text>{selectedbranch}</Text>
+        {!showPromotion && (
+          <View style={styles.LocationView}>
+            <Image
+              source={require('../assets/images/location.png')}
+              style={styles.LocationImg}
+            />
+            <Text>{selectedbranch}</Text>
+          </View>
+        )}
+
+        {showPackageOffer && (
+          <View>
+            <View style={{left: 20, marginBottom: 20}}>
+              <Text style={styles.PackageOfferText}>Package Offer</Text>
             </View>
-          )}
 
-          {showPackageOffer && (
-            <View>
-              <View style={{left: 20}}>
-                <Text style={styles.PackageOfferText}>Package Offer</Text>
-              </View>
-
-              <View style={styles.SquareCard}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    padding: 16,
-                  }}>
-                  <Text>
-                    {specialPackageAPIRes?.data?.Message[0]?.Service_Name}
-                  </Text>
-                  <Text style={{color: '#3478c1', left: 40}}>INR 1</Text>
-                  <TouchableOpacity onPress={handleArrowDownPress}>
-                    <Image
-                      source={require('../assets/images/arrowDown.png')}
-                      style={{tintColor: 'black', width: 15, height: 15}}
-                    />
-                  </TouchableOpacity>
-                </View>
-                {isDataVisible && (
-                  <View style={{left: 20}}>
-                    <TouchableOpacity>
-                      <View
-                        style={{
-                          backgroundColor: 'blue',
-                          padding: 5,
-                          width: 200,
-                          borderRadius: 10,
-                        }}>
-                        <Text
-                          style={{
-                            fontSize: 18,
-                            color: 'white',
-                            alignSelf: 'center',
-                          }}>
-                          Book Package
-                        </Text>
-                      </View>
-                    </TouchableOpacity>
-                    {boneAPIRes?.isSuccess &&
-                      boneAPIRes?.data?.Code === 200 &&
-                      boneAPIRes?.data?.Message &&
-                      boneAPIRes?.data?.Message[0]?.Service_Detail?.map(
-                        item => (
-                          <Text
-                            style={{marginTop: 10, fontSize: 14}}
-                            key={item.Test_Code}>
-                            {item.Test_Name}
-                          </Text>
-                        ),
-                      )}
-                  </View>
-                )}
-              </View>
-            </View>
-          )}
-
-          {showPromotion && (
-            <ScrollView>
-              <View style={{paddingHorizontal: 20, marginTop: 10}}>
-                <Text style={{fontSize: 17, color: '#808080'}}>
-                  Promotions are based on the user and based on their usability.
+            <View style={styles.SquareCard}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: 16,
+                }}>
+                <Text>
+                  {specialPackageAPIRes?.data?.Message[0]?.Service_Name}
                 </Text>
+                <Text style={{color: '#3478c1', left: 40}}>INR 1</Text>
+                <TouchableOpacity onPress={handleArrowDownPress}>
+                  <Image
+                    source={require('../assets/images/arrowDown.png')}
+                    style={{tintColor: 'black', width: 15, height: 15}}
+                  />
+                </TouchableOpacity>
               </View>
-
-              <FlatList data={promotionData} renderItem={renderPromotionCard} />
-            </ScrollView>
-          )}
-
-          {showHealthTips && (
-            <View>
-              <View style={{left: 20}}>
-                <Text style={styles.HealthTipsText}>Health Tips</Text>
-              </View>
-
-              <FlatList
-                data={healthData}
-                renderItem={renderHealthTipsItem}
-                keyExtractor={item => item}
-              />
+              {isDataVisible && (
+                <View style={{left: 20}}>
+                  <TouchableOpacity>
+                    <View
+                      style={{
+                        backgroundColor: 'blue',
+                        padding: 5,
+                        width: 200,
+                        borderRadius: 10,
+                      }}>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          color: 'white',
+                          alignSelf: 'center',
+                        }}>
+                        Book Package
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                  {boneAPIRes?.isSuccess &&
+                    boneAPIRes?.data?.Code === 200 &&
+                    boneAPIRes?.data?.Message &&
+                    boneAPIRes?.data?.Message[0]?.Service_Detail?.map(item => (
+                      <Text
+                        style={{marginTop: 10, fontSize: 14}}
+                        key={item.Test_Code}>
+                        {item.Test_Name}
+                      </Text>
+                    ))}
+                </View>
+              )}
             </View>
-          )}
-        </View>
+          </View>
+        )}
+
+        {showPromotion && (
+          <View style={{flex: 1}}>
+            <View style={{paddingHorizontal: 20, marginTop: 5,marginBottom:10}}>
+              <Text style={{fontSize: 17, color: '#808080'}}>
+                Promotions are based on the user and based on their usability.
+              </Text>
+            </View>
+
+            <FlatList data={promotionData} renderItem={renderPromotionCard} />
+          </View>
+        )}
+
+        {showHealthTips && (
+          <View style={{flex: 1}}>
+            <View style={{left: 20,marginBottom:10}}>
+              <Text style={styles.HealthTipsText}>Health Tips</Text>
+            </View>
+
+            <FlatList data={healthData} renderItem={renderHealthTipsItem} />
+          </View>
+        )}
       </View>
     </View>
   );
@@ -395,15 +388,14 @@ const DashBoardScreen = ({navigation}: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 350,
+    flex: 1,
     backgroundColor: '#f9a929',
-    padding: 16,
-    flexGrow: 1,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    top: 10,
+    top: 15,
+    paddingHorizontal: 20,
   },
   BookingText: {
     fontSize: 20,
@@ -419,34 +411,23 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 5,
   },
-
-  image1: {
-    width: 25,
-    height: 25,
-    tintColor: 'black',
-    alignSelf: 'center',
-  },
   cardContainer: {
-    position: 'absolute',
-    top: 110,
-    left: 0,
-    right: 0,
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    backgroundColor: '#fafbfb',
+    backgroundColor: '#fbfbfb',
+    flex: 1,
   },
   LocationView: {
     flexDirection: 'row',
     marginTop: 20,
     alignSelf: 'flex-end',
     right: 20,
-    marginBottom: 30,
-    alignItems: 'center',
+    marginBottom: 20,
   },
   LocationImg: {
     width: 20,
     height: 20,
-    marginRight: 10,
+    marginRight: 5,
   },
   PackageOfferText: {
     fontSize: 22,
@@ -459,28 +440,23 @@ const styles = StyleSheet.create({
   SquareCard: {
     width: '90%',
     borderWidth: 1,
-    height: 100,
     borderColor: '#f0f0f0',
     backgroundColor: 'white',
     alignSelf: 'center',
-    marginTop: 20,
-    marginBottom: 1000,
   },
   SquareCard1: {
     width: '90%',
     height: 150,
     backgroundColor: '#002d87',
     alignSelf: 'center',
-    marginTop: 15,
     borderRadius: 8,
-    marginBottom: 70,
+    marginBottom: 20,
   },
   SquareCard2: {
     width: '90%',
-    height: 150,
     backgroundColor: '#002d87',
     alignSelf: 'center',
-    marginTop: 20,
+    marginBottom: 20,
     borderRadius: 30,
   },
   separator: {
@@ -527,12 +503,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     textAlign: 'center',
-  },
-  cardContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    paddingBottom: 10,
   },
   CouponCodeView: {
     flexDirection: 'row',

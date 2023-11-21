@@ -74,15 +74,11 @@ const BookingScreen = ({navigation}: any) => {
           <View style={styles.Column2}>
             <Text style={styles.CardTextName}>{item.Pt_Name}</Text>
             <View style={{flexDirection: 'row'}}>
-              <View>
-                <Image
-                  source={require('../assets/images/booking_id_img.png')}
-                  style={styles.BookIdImg}
-                />
-              </View>
-              <View>
-                <Text style={styles.CardTextNumber}>{item.Booking_No}</Text>
-              </View>
+              <Image
+                source={require('../assets/images/booking_id_img.png')}
+                style={styles.BookIdImg}
+              />
+              <Text style={styles.CardTextNumber}>{item.Booking_No}</Text>
             </View>
 
             <View style={styles.ButtonView}>
@@ -93,15 +89,11 @@ const BookingScreen = ({navigation}: any) => {
           </View>
           <View style={styles.Column3}>
             <View style={{flexDirection: 'row'}}>
-              <View>
-                <Image
-                  source={require('../assets/images/location.png')}
-                  style={styles.LocationImg}
-                />
-              </View>
-              <View>
-                <Text style={styles.PlaceText}>{item.Place}</Text>
-              </View>
+              <Image
+                source={require('../assets/images/location.png')}
+                style={styles.LocationImg}
+              />
+              <Text style={styles.PlaceText}>{item.Place}</Text>
             </View>
 
             <View style={{flexDirection: 'row'}}>
@@ -124,17 +116,13 @@ const BookingScreen = ({navigation}: any) => {
 
             <View style={styles.PhoneView}>
               <View style={{flexDirection: 'row'}}>
-                <View>
-                  <TouchableOpacity>
-                    <Image
-                      source={require('../assets/images/callIcon.png')}
-                      style={styles.callIcon}
-                    />
-                  </TouchableOpacity>
-                </View>
-                <View>
-                  <Text style={styles.PhoneNumber}>{item.Pt_Mobile_No}</Text>
-                </View>
+                <TouchableOpacity>
+                  <Image
+                    source={require('../assets/images/callIcon.png')}
+                    style={styles.callIcon}
+                  />
+                </TouchableOpacity>
+                <Text style={styles.PhoneNumber}>{item.Pt_Mobile_No}</Text>
               </View>
             </View>
           </View>

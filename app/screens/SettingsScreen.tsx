@@ -15,11 +15,16 @@ import {useSamyakDefaultBranchPostMutation} from '../redux/service/DefaultBranch
 import {useSamyakNotificationCountPostMutation} from '../redux/service/NotificationCountService';
 
 const SettingsScreen = ({navigation}: any) => {
+  //useState for display the branch
+  const [selectedbranch, setSelectedBranch] = useState('RT-MAIN(PORUR)');
+  //api for contactUs
   const [contactUsAPIReq] = useSamyakContactUsPostMutation();
+  //api for aboutUs
   const [aboutUsAPIReq] = useSamyakAboutUsPostMutation();
+  // api for notification
   const [notificationAPIReq, notificationAPIRes] =
     useSamyakNotificationCountPostMutation();
-  const [selectedbranch, setSelectedBranch] = useState('RT-MAIN(PORUR)');
+  //api for defaultBranch
   const [defaultManageBranchAPIReq, defaultManageBranchAPIRes] =
     useSamyakDefaultBranchPostMutation();
 
@@ -165,7 +170,7 @@ const SettingsScreen = ({navigation}: any) => {
       </View>
     </TouchableOpacity>
   );
-
+  console.log('notificationAPIRes?????????', notificationAPIRes);
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -192,6 +197,7 @@ const SettingsScreen = ({navigation}: any) => {
                 </Text>
               </View>
             )}
+
           <TouchableOpacity onPress={handleProfile}>
             <View style={styles.circle}>
               <Text style={styles.circleText}>RA</Text>

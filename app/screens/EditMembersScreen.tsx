@@ -158,18 +158,20 @@ const EditMembersScreen = ({navigation}: any) => {
       </View>
 
       <View style={[styles.inputDrop, styles.dropdownContainer]}>
-        <TextInput
-          style={[styles.borderRadius]}
-          placeholder="Phone Number"
-          onChangeText={setPhoneNumber}
-          value={phoneNumber}
-        />
-        <TouchableOpacity style={styles.touchableContainer}>
-          <Image
-            source={require('../assets/images/search.png')}
-            style={styles.SearchImg}
+        <View style={styles.inputContainer1}>
+          <TextInput
+            style={[styles.input, styles.borderRadius]}
+            placeholder="Phone Number"
+            onChangeText={setPhoneNumber}
+            value={phoneNumber}
           />
-        </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+              source={require('../assets/images/search.png')}
+              style={styles.SearchImg}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View style={[styles.inputDrop, styles.dropdownContainer]}>
@@ -325,13 +327,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#a19b9b',
   },
-  input: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: 'white',
-    margin: 15,
-    borderRadius: 90,
-  },
+
   inputDrop: {
     padding: 20,
     backgroundColor: 'white',
@@ -393,13 +389,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '90%',
   },
-  SearchImg: {
-    width: 20,
-    height: 20,
-    position: 'absolute',
-    right: 20,
-    tintColor: 'black',
-  },
   CalenderImg: {
     width: 20,
     height: 20,
@@ -409,5 +398,19 @@ const styles = StyleSheet.create({
   },
   borderRadius: {
     borderRadius: 50,
+  },
+  inputContainer1: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  input: {
+    flex: 1,
+    paddingVertical: 1,
+  },
+  SearchImg: {
+    width: 20,
+    height: 20,
+    right: 20,
+    resizeMode: 'contain',
   },
 });

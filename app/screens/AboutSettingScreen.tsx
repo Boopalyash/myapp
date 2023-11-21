@@ -18,7 +18,7 @@ import {useSamyakDefaultBranchPostMutation} from '../redux/service/DefaultBranch
 
 const AboutSettingScreen = ({navigation}: any) => {
   const [selectedbranch, setSelectedBranch] = useState('RT-MAIN(PORUR)');
-  // api
+  // api to display the default branch
   const [defaultManageBranchAPIReq, defaultManageBranchAPIRes] =
     useSamyakDefaultBranchPostMutation();
   const aboutUsData = useSelector(
@@ -100,19 +100,19 @@ const AboutSettingScreen = ({navigation}: any) => {
           resizeMode="contain"
         />
 
-        <View style={{alignSelf: 'center', marginTop: 20}}>
+        <View style={{alignSelf: 'center'}}>
           <Text style={{fontSize: 30, fontWeight: 400}}>
             {aboutUsData?.Message[0]?.Client_Name}
           </Text>
         </View>
 
-        <View style={{marginTop: 20, paddingHorizontal: 15}}>
+        <View style={{paddingHorizontal: 15}}>
           <HTMLRender
             source={{html: aboutUsData?.Message[0]?.Client_Description}}
           />
         </View>
 
-        <View style={{marginTop: 20, paddingHorizontal: 15}}>
+        <View style={{paddingHorizontal: 15}}>
           <Text>{aboutUsData?.Message[0]?.Client_Location}</Text>
         </View>
 
@@ -121,6 +121,7 @@ const AboutSettingScreen = ({navigation}: any) => {
             style={{
               backgroundColor: '#ffa500',
               marginTop: 20,
+              marginBottom: 20,
               padding: 20,
             }}>
             <Text style={{alignSelf: 'center', color: 'white', fontSize: 18}}>
@@ -150,14 +151,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   container: {
-    height: 100,
+    height: 70,
     backgroundColor: 'orange',
-    padding: 16,
+    paddingHorizontal: 16,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    top: 30,
+    top: 20,
   },
   BookingText: {
     fontSize: 20,
@@ -176,7 +177,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignSelf: 'flex-end',
     right: 20,
-    marginBottom: 30,
     alignItems: 'center',
   },
   LocationImg: {
@@ -199,18 +199,15 @@ const styles = StyleSheet.create({
   },
   Logo: {
     alignSelf: 'center',
-    marginTop: 20,
   },
   BackButtonView: {
-    width: '30%',
-    left: 15,
+    left: 20,
     position: 'absolute',
     bottom: 0,
-    marginBottom: 20,
+    marginBottom: 25,
   },
   buttons: {
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#676767',
     borderRadius: 15,
@@ -220,7 +217,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     tintColor: 'white',
-    right: 15,
+    right: 10,
   },
   buttonTexts: {
     color: 'white',

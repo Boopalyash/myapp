@@ -52,7 +52,6 @@ const LabScreen = ({navigation}: any) => {
 
   // api for  bone profile in stepper 1
   const [boneAPIReq, boneAPIRes] = useSamyakLabChooseBonePostMutation();
-  console.log('boneApi', boneAPIRes);
 
   // api for bookType in stepper 2
   const [booktypeAPIReq, booktypeAPIRes] = useSamyakBookTypePostMutation();
@@ -67,6 +66,7 @@ const LabScreen = ({navigation}: any) => {
   //api for show patient relation in stepper 3
   const [relatioshipAPIReq, relatioshipAPIRes] =
     useSamyakRelationshipPostMutation();
+
   const [dayWiseApiReq] = useSamyakBookDayWisePostMutation();
   useEffect(() => {
     setShowChooseTestView(currentStep === 1);
@@ -129,9 +129,7 @@ const LabScreen = ({navigation}: any) => {
           }
         })
         .catch(error => console.error('Error ', error));
-      return () => {
-        // console.log('Screen is unfocused');
-      };
+      return () => {};
     }, [defaultManageBranchAPIReq]),
   );
 
@@ -546,7 +544,6 @@ const LabScreen = ({navigation}: any) => {
             <View
               style={{
                 marginTop: 10,
-                width: '30%',
                 alignSelf: 'flex-end',
                 right: 30,
               }}>
@@ -605,9 +602,8 @@ const LabScreen = ({navigation}: any) => {
 
                 <View
                   style={{
-                    marginTop: 10,
-                    width: '30%',
-                    left: 25,
+                    left: 20,
+                    alignSelf: 'flex-start',
                   }}>
                   <TouchableOpacity
                     style={styles.buttons}
@@ -1159,7 +1155,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#676767',
-    borderRadius: 20,
+    borderRadius: 15,
     paddingHorizontal: 30,
     paddingVertical: 15,
   },

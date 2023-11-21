@@ -1,6 +1,7 @@
 // export const BASE_URL = 'http://103.146.234.52:7021/App_RT_UAT/api/Patient';
 export const BASE_URL =
   'http://110.44.126.145:9090/SamyakApp_Stage/API/Patient';
+  
 // Login api
 export const LOGIN = 'User_Login';
 

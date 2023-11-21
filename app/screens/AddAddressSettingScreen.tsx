@@ -82,6 +82,7 @@ const AddAddressSettingScreen = ({navigation}: any) => {
   const handleCross = () => {
     navigation.navigate('ManageAddress');
   };
+
   const handleLocationArrowClick = () => {
     setShowMap(true);
   };
@@ -89,14 +90,10 @@ const AddAddressSettingScreen = ({navigation}: any) => {
   return (
     <ScrollView style={styles.MainContainer}>
       <View style={styles.AddMemberView}>
-        <View>
-          <Text style={styles.headerText}>Add Address</Text>
-        </View>
-        <View>
-          <TouchableOpacity onPress={handleCross}>
-            <Image source={require('../assets/images/black_cross.png')} />
-          </TouchableOpacity>
-        </View>
+        <Text style={styles.headerText}>Add Address</Text>
+        <TouchableOpacity onPress={handleCross}>
+          <Image source={require('../assets/images/black_cross.png')} />
+        </TouchableOpacity>
       </View>
       <View style={styles.MapContainer}>
         <View style={styles.MapView}>

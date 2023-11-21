@@ -7,7 +7,9 @@ import {useFocusEffect} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ContactUsSettingScreen = ({navigation}: any) => {
+  //useState to display the branch
   const [selectedbranch, setSelectedBranch] = useState('RT-MAIN(PORUR)');
+  //api for default manage branch
   const [defaultManageBranchAPIReq, defaultManageBranchAPIRes] =
     useSamyakDefaultBranchPostMutation();
 
@@ -27,6 +29,7 @@ const ContactUsSettingScreen = ({navigation}: any) => {
     navigation.navigate('SosAlert');
   };
 
+  //useEffect to display the default manage branch
   useFocusEffect(
     React.useCallback(() => {
       AsyncStorage.getItem('selectedBranch')
@@ -179,7 +182,7 @@ const styles = StyleSheet.create({
   CenterView: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 150,
+    marginTop: 100,
   },
   roundBackground: {
     width: 100,
