@@ -205,7 +205,7 @@ const EditMembersScreen = ({navigation}: any) => {
         )}
       </View>
 
-      <View style={[styles.inputDrop, styles.dropdownContainer]}>
+      <View style={[styles.inputDrop1]}>
         <TextInput
           style={[styles.borderRadius]}
           placeholder="Name"
@@ -318,8 +318,8 @@ const styles = StyleSheet.create({
   },
   AddMemberView: {
     flexDirection: 'row',
-    marginTop: 60,
-    marginBottom: 30,
+    marginTop: 30,
+    // marginBottom: 30,
     justifyContent: 'space-between',
     paddingHorizontal: 30,
   },
@@ -327,9 +327,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#a19b9b',
   },
-
   inputDrop: {
     padding: 20,
+    backgroundColor: 'white',
+    margin: 15,
+    borderRadius: 50,
+  },
+  inputDrop1: {
+    padding: 6,
     backgroundColor: 'white',
     margin: 15,
     borderRadius: 50,

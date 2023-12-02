@@ -448,7 +448,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   input: {
-    // height: 100,
     width: 280,
     backgroundColor: 'white',
     borderRadius: 10,

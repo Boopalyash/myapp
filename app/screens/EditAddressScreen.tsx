@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
   },
   AddMemberView: {
     flexDirection: 'row',
-    marginTop: 60,
+    marginTop: 40,
     marginBottom: 30,
     justifyContent: 'space-between',
     paddingHorizontal: 30,

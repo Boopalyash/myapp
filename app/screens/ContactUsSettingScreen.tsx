@@ -213,8 +213,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   BackButtonView: {
-    width: '30%',
-    left: 15,
+    left: 20,
     position: 'absolute',
     bottom: 0,
     marginBottom: 20,
@@ -231,7 +230,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     tintColor: 'white',
-    right: 15,
+    right: 10,
   },
   buttonTexts: {
     color: 'white',

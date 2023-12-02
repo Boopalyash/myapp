@@ -23,7 +23,7 @@ const DashBoardScreen = ({navigation}: any) => {
   const [showPackageOffer, setShowPackageOffer] = useState(false);
   const [showHealthTips, setShowHealthTips] = useState(false);
   const [showPromotion, setShowPromotion] = useState(false);
-  const [showFullDescription, setShowFullDescription] = useState(false);
+  const [showFullDescription] = useState(false);
   const [selectedbranch, setSelectedBranch] = useState('RT-MAIN(PORUR)');
   const [setBoneData] = useState([]);
   const [setSpecialPackage] = useState([]);
@@ -75,10 +75,6 @@ const DashBoardScreen = ({navigation}: any) => {
   const handleProfile = () => {
     navigation.navigate('Profile');
   };
-
-  // const toggleDescription = () => {
-  //   setShowFullDescription(!showFullDescription);
-  // };
 
   //useEffect for default branch
   useFocusEffect(
@@ -362,7 +358,8 @@ const DashBoardScreen = ({navigation}: any) => {
 
         {showPromotion && (
           <View style={{flex: 1}}>
-            <View style={{paddingHorizontal: 20, marginTop: 5,marginBottom:10}}>
+            <View
+              style={{paddingHorizontal: 20, marginTop: 5, marginBottom: 10}}>
               <Text style={{fontSize: 17, color: '#808080'}}>
                 Promotions are based on the user and based on their usability.
               </Text>
@@ -374,7 +371,7 @@ const DashBoardScreen = ({navigation}: any) => {
 
         {showHealthTips && (
           <View style={{flex: 1}}>
-            <View style={{left: 20,marginBottom:10}}>
+            <View style={{left: 20}}>
               <Text style={styles.HealthTipsText}>Health Tips</Text>
             </View>
 

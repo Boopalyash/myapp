@@ -159,7 +159,8 @@ const LabScreen = ({navigation}: any) => {
   useEffect(() => {
     const boneObj = {
       userName: '9849390103',
-      Service_Code: 'P00360',
+      // Service_Code: 'P00360',
+      Service_Code: 'P00082',
     };
     boneAPIReq(boneObj)
       .unwrap()
@@ -496,7 +497,9 @@ const LabScreen = ({navigation}: any) => {
                   <Text>
                     {specialPackageAPIRes?.data?.Message[0]?.Service_Name}
                   </Text>
-                  <Text style={{color: '#3478c1', left: 40}}>INR 1</Text>
+                  <Text style={{color: '#3478c1', left: 40}}>
+                    NPR {specialPackageAPIRes?.data?.Message[0]?.Amount}
+                  </Text>
                   <TouchableOpacity onPress={handleArrowDownPress}>
                     <Image
                       source={require('../assets/images/arrowDown.png')}
@@ -1056,7 +1059,6 @@ const styles = StyleSheet.create({
   SquareCard: {
     width: '90%',
     borderWidth: 1,
-    height: 100,
     backgroundColor: '#ffffff',
     alignSelf: 'center',
     marginTop: 10,
@@ -1070,11 +1072,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#676767',
     borderRadius: 20,
     padding: 10,
+    marginBottom: 5,
   },
   buttonImages: {
     width: 20,
     height: 20,
-    // left: 15,
     tintColor: 'white',
   },
   buttonImagess: {
@@ -1101,7 +1103,7 @@ const styles = StyleSheet.create({
     height: 45,
     width: 200,
     marginTop: 15,
-    borderWidth: 0.8,
+    borderWidth: 1,
     borderRadius: 30,
     overflow: 'hidden',
     borderColor: 'grey',
@@ -1199,7 +1201,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 10,
     marginTop: 20,
-    marginBottom: 200,
+    marginBottom: 20,
   },
   DotView: {
     backgroundColor: 'white',

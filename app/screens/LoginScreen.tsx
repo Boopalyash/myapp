@@ -9,7 +9,6 @@ import {
   Alert,
   TouchableOpacity,
   ActivityIndicator,
-
 } from 'react-native';
 
 // components and utilities
@@ -27,7 +26,6 @@ const LoginScreen = ({navigation}: any) => {
   const [isError, setIsError] = useState(false);
   const [userDetails] = useState<any>();
   const [loading, setLoading] = useState(false);
- 
 
   // Api functions
   const [loginAPIReq, LoginAPIRes] = useSamyakLoginPostMutation();
@@ -179,23 +177,18 @@ const styles = StyleSheet.create({
     height: 300,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-  
   },
   text: {
     top: 30,
-
     fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
   },
   card: {
     top: 80,
-    
     position: 'absolute',
     backgroundColor: 'white',
-    width: 360,
-    height: 600,
- 
+    width: '90%',
     borderRadius: 10,
     alignSelf: 'center',
     shadowColor: 'black',
@@ -209,7 +202,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
   },
   input: {
-    width: 300,
+    width: '80%',
     alignSelf: 'center',
     borderRadius: 30,
     padding: 15,

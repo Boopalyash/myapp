@@ -6,7 +6,6 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  Dimensions,
 } from 'react-native';
 import {Card} from 'react-native-paper';
 import {useSamyakTestTrendsPostMutation} from '../redux/service/TestTrendsTest';
